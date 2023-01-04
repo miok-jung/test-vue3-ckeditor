@@ -8,7 +8,7 @@ npm init quasar
 
 ```bash
 nvm list
-nvm use 18.16.0
+nvm use v18.16.0
 node -v
 ```
 
