@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "@tinymce/tinymce-vue": "^4.0.7",
     "css-loader": "^5.2.7",
     "pinia": "^2.0.11",
     "postcss-loader": "^4.3.0",

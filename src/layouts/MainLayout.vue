@@ -46,6 +46,12 @@ const linksList = [
     icon: 'school',
     to: '/ckeditor',
   },
+  {
+    title: 'Tinymce',
+    caption: 'Study to Tinymce',
+    icon: 'title',
+    to: '/tinymce',
+  },
   
 ];
 
