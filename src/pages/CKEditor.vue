@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <ckeditor :editor="editor" v-model="editorData" :config="editorConfig" />
-    <br />
-    <hr />
-    <br />
-  </div>
-  <div>
-    <ckeditor :editor="inlineEditor" v-model="inlineEditorData" />
+  <div
+    class="row q-pa-lg q-gutter-md"
+    style="border: 1px solid lime; height: 700px"
+  >
+    <div class="col" style="border: 1px solid blue">
+      <ckeditor :editor="inlineEditor" v-model="inlineEditorData" />
+    </div>
+    <div class="col" style="border: 1px solid red">
+      <ckeditor :editor="editor" v-model="editorData" :config="editorConfig" />
+    </div>
   </div>
 </template>
 
