@@ -7,7 +7,12 @@
       <ckeditor :editor="inlineEditor" v-model="inlineEditorData" />
     </div>
     <div class="col" style="border: 1px solid red">
-      <ckeditor :editor="editor" v-model="editorData" :config="editorConfig" />
+      <ckeditor
+        :editor="editor"
+        v-model="editorData"
+        heigh="inherit"
+        :config="editorConfig"
+      />
     </div>
   </div>
 </template>

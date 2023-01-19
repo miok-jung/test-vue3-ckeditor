@@ -36,5 +36,9 @@
   },
   "scripts": {
     "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-special-characters": "^35.4.0",
+    "autoprefixer": "^10.4.13"
   }
 }
