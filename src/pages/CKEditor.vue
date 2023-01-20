@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import CKEDITOR from 'ckeditor5-custom-build';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const ckeditor = CKEditor.component;
 const editor = CKEDITOR.ClassicEditor;
@@ -28,7 +28,11 @@ const editorData = ref('');
 const editorConfig = '<p>Content of the editor.</p>';
 
 const inlineEditor = CKEDITOR.InlineEditor;
-const inlineEditorData = ref('');
+const inlineEditorData = ref('test');
+watch(editorData, () => {
+  console.log('내용');
+  ckeditor.getData();
+});
 </script>
 
 <style scoped></style>

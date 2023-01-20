@@ -52,7 +52,6 @@ const linksList = [
     icon: 'title',
     to: '/tinymce',
   },
-  
 ];
 
 export default defineComponent({
