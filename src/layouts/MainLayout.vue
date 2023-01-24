@@ -8,11 +8,17 @@
           round
           icon="menu"
           aria-label="Menu"
-          @click="toggleLeftDrawer"
+          @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
         <q-toolbar-title> Quasar App </q-toolbar-title>
-
+        <q-btn
+          round
+          flat
+          dense
+          :icon="darkmodeIcon"
+          @click="toggleDarkMode()"
+        />
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
@@ -22,7 +28,7 @@
         <q-item-label header> Essential Links </q-item-label>
 
         <EssentialLink
-          v-for="link in essentialLinks"
+          v-for="link in navArray"
           :key="link.title"
           v-bind="link"
         />
@@ -35,11 +41,16 @@
   </q-layout>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
+<script setup lang="ts">
+import { ref, computed } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue';
+import { useQuasar } from 'quasar';
 
-const linksList = [
+const $q = useQuasar();
+
+const leftDrawerOpen = ref(false);
+
+const navArray = [
   {
     title: 'CKEditor',
     caption: 'Study to CKEditor',
@@ -53,24 +64,12 @@ const linksList = [
     to: '/tinymce',
   },
 ];
-
-export default defineComponent({
-  name: 'MainLayout',
-
-  components: {
-    EssentialLink,
-  },
-
-  setup() {
-    const leftDrawerOpen = ref(false);
-
-    return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
-    };
-  },
-});
+const darkmodeIcon = computed(() =>
+  $q.dark.isActive ? 'dark_mode' : 'light_mode'
+);
+const toggleDarkMode = () => {
+  $q.dark.toggle();
+  $q.localStorage.set('darkMode', $q.dark.isActive);
+  console.log('click');
+};
 </script>
