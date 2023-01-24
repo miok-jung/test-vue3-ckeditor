@@ -70,6 +70,5 @@ const darkmodeIcon = computed(() =>
 const toggleDarkMode = () => {
   $q.dark.toggle();
   $q.localStorage.set('darkMode', $q.dark.isActive);
-  console.log('click');
 };
 </script>
