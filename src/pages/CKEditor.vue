@@ -1,17 +1,21 @@
 <template>
   <div
-    class="row q-pa-lg q-gutter-md"
+    class="row q-pa-xl q-gutter-md"
     style="border: 1px solid lime; height: 700px"
   >
-    <div class="col" style="border: 1px solid blue">
-      <ckeditor :editor="inlineEditor" v-model="inlineEditorData" />
-    </div>
-    <div class="col" style="border: 1px solid red">
+    <div class="col">
       <ckeditor
-        :editor="editor"
+        :editor="InlineEditor"
+        v-model="inlineEditorData"
+        style="border: 1px solid darkgoldenrod; height: 100px"
+      />
+    </div>
+    <div class="col">
+      <ckeditor
+        :editor="classEditor"
         v-model="editorData"
-        heigh="inherit"
-        :config="editorConfig"
+        :style="style"
+        @ready="onReady"
       />
     </div>
   </div>
@@ -20,19 +24,45 @@
 <script setup lang="ts">
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import CKEDITOR from 'ckeditor5-custom-build';
+import { useEditorStore } from 'src/stores/useEditorStore';
 import { ref, watch } from 'vue';
 
-const ckeditor = CKEditor.component;
-const editor = CKEDITOR.ClassicEditor;
-const editorData = ref('');
-const editorConfig = '<p>Content of the editor.</p>';
+const es = useEditorStore();
 
-const inlineEditor = CKEDITOR.InlineEditor;
-const inlineEditorData = ref('test');
-watch(editorData, () => {
-  console.log('내용');
-  ckeditor.getData();
-});
+const ckeditor = CKEditor.component;
+const classEditor = CKEDITOR.ClassicEditor;
+const editorData = ref('ff');
+
+const InlineEditor = CKEDITOR.InlineEditor;
+const inlineEditorData = ref('dd');
+
+const readyEditor = ref();
+readyEditor.value = editorData;
+const onReady = (editor: any) => {
+  readyEditor.value = editor;
+};
+
+const darkMode = ref(false);
+watch(
+  () => es.isDarkMode,
+  (newValue) => {
+    darkMode.value = newValue;
+    style();
+  }
+);
+
+const style = () => {
+  const toolbarStyle = readyEditor.value.ui.view.toolbar.element.style;
+  const main = readyEditor.value.ui.view.element.lastChild.lastChild.style;
+
+  if (es.isDarkMode) {
+    toolbarStyle.backgroundColor = '#4a494b';
+    main.backgroundColor = 'transparent';
+  } else {
+    toolbarStyle.backgroundColor = '#e2e2e2';
+    main.backgroundColor = 'transparent';
+  }
+};
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>

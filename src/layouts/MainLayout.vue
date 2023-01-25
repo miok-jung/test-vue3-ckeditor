@@ -45,11 +45,12 @@
 import { ref, computed } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue';
 import { useQuasar } from 'quasar';
+import { useEditorStore } from 'src/stores/useEditorStore';
 
 const $q = useQuasar();
 
 const leftDrawerOpen = ref(false);
-
+const es = useEditorStore();
 const navArray = [
   {
     title: 'CKEditor',
@@ -70,5 +71,14 @@ const darkmodeIcon = computed(() =>
 const toggleDarkMode = () => {
   $q.dark.toggle();
   $q.localStorage.set('darkMode', $q.dark.isActive);
+  es.isDarkMode = !es.isDarkMode;
+
+  if (es.isDarkMode) {
+    console.log('DarkMode');
+    // import('../css/_ckeditor.css');
+  } else {
+    console.log('LightMode');
+    // import('../css/_ckeditorDarkmode.css');
+  }
 };
 </script>
