@@ -1,14 +1,10 @@
 <template>
   <div
     class="row q-pa-xl q-gutter-md"
-    style="border: 1px solid lime; height: 700px"
+    style="box-shadow: 5px 5px 5px aliceblue; height: 700px"
   >
     <div class="col">
-      <ckeditor
-        :editor="InlineEditor"
-        v-model="inlineEditorData"
-        style="border: 1px solid darkgoldenrod; height: 100px"
-      />
+      <InnerEditor />
     </div>
     <div class="col">
       <ckeditor
@@ -16,25 +12,23 @@
         v-model="editorData"
         :style="style"
         @ready="onReady"
+        id="ck-editor-classic"
+        style="border: 1px solid red; display block;"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import CKEditor from '@ckeditor/ckeditor5-vue';
 import CKEDITOR from 'ckeditor5-custom-build';
 import { useEditorStore } from 'src/stores/useEditorStore';
 import { ref, watch } from 'vue';
+import InnerEditor from 'src/components/InnerEditor.vue';
 
 const es = useEditorStore();
 
-const ckeditor = CKEditor.component;
 const classEditor = CKEDITOR.ClassicEditor;
 const editorData = ref('ff');
-
-const InlineEditor = CKEDITOR.InlineEditor;
-const inlineEditorData = ref('dd');
 
 const readyEditor = ref();
 readyEditor.value = editorData;

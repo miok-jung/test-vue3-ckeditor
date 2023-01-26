@@ -3,7 +3,7 @@
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
-import InlineEditorBase from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
+import InlineEditorBase from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor.js';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment.js';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat.js';
 import AutoImage from '@ckeditor/ckeditor5-image/src/autoimage.js';
@@ -127,19 +127,21 @@ ClassicEditor.builtinPlugins = [
 ];
 InlineEditor.builtinPlugins = [
   Bold,
+  Essentials,
   Italic,
-  Underline,
+  Paragraph,
+  SpecialCharacters,
+  SpecialCharactersArrows,
+  SpecialCharactersCurrency,
+  SpecialCharactersEssentials,
+  SpecialCharactersLatin,
+  SpecialCharactersSymbol,
+  SpecialCharactersMathematical,
+  SpecialCharactersText,
   Strikethrough,
   Subscript,
   Superscript,
-  SpecialCharacters,
-  SpecialCharactersEssentials,
-  SpecialCharactersCurrency,
-  SpecialCharactersText,
-  SpecialCharactersMathematical,
-  SpecialCharactersLatin,
-  SpecialCharactersSymbol,
-  SpecialCharactersArrows,
+  Underline,
 ];
 // Editor configuration.
 ClassicEditor.defaultConfig = {
