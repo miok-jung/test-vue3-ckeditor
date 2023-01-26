@@ -34,6 +34,7 @@ const readyEditor = ref();
 readyEditor.value = editorData;
 const onReady = (editor: any) => {
   readyEditor.value = editor;
+  style();
 };
 
 const darkMode = ref(false);
@@ -59,4 +60,4 @@ const style = () => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

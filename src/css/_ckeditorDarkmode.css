@@ -1,31 +1,49 @@
 :root {
-  /* Overrides the border radius setting in the theme. */
+  /* 에디터 round */
   --ck-border-radius: 4px;
-
-  /* Overrides the default font size in the theme. */
+  /* 에디터 toolbar 폰트사이즈 */
   --ck-font-size-base: 14px;
 
-  /* Helper variables to avoid duplication in the colors. */
-  --ck-custom-background: #4a494b;
-  --ck-custom-foreground: #2d2d2f;
-  --ck-custom-border: hsl(300, 1%, 22%);
+  /* NOTE: 툴바관련 공통배경화면 */
+  --ck-custom-background: #d5cedf;
+
+  --ck-color-base-foreground: var(--ck-custom-background);
+
+  /* 툴바 아이콘별 기본 배경화면 */
+  --ck-color-button-default-background: var(--ck-custom-background);
+
+  /*  FIXME: 미확인 배경 */
+  --ck-color-button-default-disabled-background: var(--ck-custom-background);
+
+  /* 툴바 아이콘에서 드롭다운되는 컴포넌트 배경화면 */
+  --ck-color-dropdown-panel-background: var(--ck-custom-background);
+
+  /* 공통 보더 */
+  --ck-custom-border: pink;
+  /*  FIXME: 미확인 보더 */
+  --ck-color-panel-border: var(--ck-custom-border);
+  /* 툴바 보더 */
+  --ck-color-toolbar-border: var(--ck-custom-border);
+
+  /* 툴바 텍스트 칼라 선택 */
+  --ck-color-text: hsl(0, 0%, 0%);
+  /* -------------------------------------------------------------------- */
+
+  --ck-custom-foreground: hsl(255, 3%, 18%);
   --ck-custom-white: hsl(0, 0%, 100%);
 
   /* -- Overrides generic colors. ------------------------------------------------------------- */
 
-  --ck-color-base-foreground: var(--ck-custom-background);
   --ck-color-focus-border: hsl(208, 90%, 62%);
-  --ck-color-text: hsl(0, 0%, 98%);
+
   --ck-color-shadow-drop: hsla(0, 0%, 0%, 0.2);
   --ck-color-shadow-inner: hsla(0, 0%, 0%, 0.1);
 
   /* -- Overrides the default .ck-button class colors. ---------------------------------------- */
 
-  --ck-color-button-default-background: var(--ck-custom-background);
   --ck-color-button-default-hover-background: hsl(270, 1%, 22%);
   --ck-color-button-default-active-background: hsl(270, 2%, 20%);
   --ck-color-button-default-active-shadow: hsl(270, 2%, 23%);
-  --ck-color-button-default-disabled-background: var(--ck-custom-background);
 
   --ck-color-button-on-background: var(--ck-custom-foreground);
   --ck-color-button-on-hover-background: hsl(255, 4%, 16%);
@@ -45,7 +63,6 @@
 
   /* -- Overrides the default .ck-dropdown class colors. -------------------------------------- */
 
-  --ck-color-dropdown-panel-background: var(--ck-custom-background);
   --ck-color-dropdown-panel-border: var(--ck-custom-foreground);
 
   /* -- Overrides the default .ck-splitbutton class colors. ----------------------------------- */
@@ -79,12 +96,10 @@
   /* -- Overrides the default .ck-balloon-panel class colors. --------------------------------- */
 
   --ck-color-panel-background: var(--ck-custom-background);
-  --ck-color-panel-border: var(--ck-custom-border);
 
   /* -- Overrides the default .ck-toolbar class colors. --------------------------------------- */
 
   --ck-color-toolbar-background: var(--ck-custom-background);
-  --ck-color-toolbar-border: var(--ck-custom-border);
 
   /* -- Overrides the default .ck-tooltip class colors. --------------------------------------- */
 

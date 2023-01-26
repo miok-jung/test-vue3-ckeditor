@@ -71,7 +71,7 @@ function SpecialCharactersSymbol(editor) {
   ]);
 }
 // Plugins to include in the build.
-ClassicEditor.builtinPlugins = [
+const plugins = [
   Alignment,
   Autoformat,
   AutoImage,
@@ -125,24 +125,8 @@ ClassicEditor.builtinPlugins = [
   TextTransformation,
   Underline,
 ];
-InlineEditor.builtinPlugins = [
-  Bold,
-  Essentials,
-  Italic,
-  Paragraph,
-  SpecialCharacters,
-  SpecialCharactersArrows,
-  SpecialCharactersCurrency,
-  SpecialCharactersEssentials,
-  SpecialCharactersLatin,
-  SpecialCharactersSymbol,
-  SpecialCharactersMathematical,
-  SpecialCharactersText,
-  Strikethrough,
-  Subscript,
-  Superscript,
-  Underline,
-];
+ClassicEditor.builtinPlugins = plugins;
+InlineEditor.builtinPlugins = plugins;
 // Editor configuration.
 ClassicEditor.defaultConfig = {
   toolbar: {
