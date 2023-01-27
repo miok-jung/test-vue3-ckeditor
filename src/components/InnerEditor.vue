@@ -7,10 +7,9 @@
     @mouseover="onMouseoverInlineEditor"
     @mouseleave="onMouseleaveInlineEditor"
     :style="[
-      // es.isDarkMode ? inlineEditorDarkStyle : inlineEditorLightStyle,
       {
-        color: es.isDarkMode ? 'lime' : 'darkgrey',
-        border: es.isDarkMode ? '1px solid purple' : '1px solid orange', // 일반 테마보더
+        color: 'var(--input-color-text)',
+        border: `1px solid var(--border-color)`,
         '--border-color': inlineEditorStyle.border, // 포커스 보더
       },
     ]"
@@ -21,12 +20,7 @@
 <script setup lang="ts">
 import CKEDITOR from 'ckeditor5-custom-build';
 import { useEditorStore } from 'src/stores/useEditorStore';
-import { ref, watch, computed } from 'vue';
-// import {
-//   inlineEditorLightStyle,
-//   inlineEditorDarkStyle,
-// } from 'src/css/ckeditor';
-// import '../css/_ckeditor.css';
+import { ref, computed } from 'vue';
 
 const es = useEditorStore();
 
@@ -51,10 +45,10 @@ const onReady = (editor: any) => {
       'ck-focused'
     );
   });
+
   // console.log('eidtor', editor);
 
   // 포커스 이벤트 종료후 테마 툴 변경
-  themeToolbar();
 };
 
 // TODO: 포커스가 된 후 다크모드에 따라 변환 문제가 발생하여 추가된 코드(추후 체크가 필요)
@@ -63,61 +57,34 @@ const onReady = (editor: any) => {
 const inlineEditorStyle = computed(() => {
   if (isFocus.value) {
     return {
-      border: es.isDarkMode ? 'red' : 'lime',
+      border: es.isDarkMode ? '#a554a7' : '#ed8fa5',
     };
   } else {
     return {};
   }
 });
-// 테마가 변환이 될때 툴바 설정 : CSS로 되지 않는 경우 여기에 가장 먼저 작성
-const themeToolbar = () => {
-  // console.log(readyEditor.value);
-  const toolbarElBg = readyEditor.value.ui.view.toolbar.element.style;
-
-  // NOTE: 인라인 에디터 보더값
-  const panelElement = document.getElementsByClassName(
-    'ck-toolbar-container'
-  )[0] as HTMLElement;
-
-  // console.log('toolbar', readyEditor.value.ui.view.toolbar);
-  // console.log('panel', panelElement);
-  panelElement.style.boxShadow = 'none';
-  if (es.isDarkMode) {
-    toolbarElBg.backgroundColor = '#4a494b'; // toolbar
-    panelElement.style.border = '1px solid yellow'; // toolbar border
-  } else {
-    toolbarElBg.backgroundColor = '#f1f2f3';
-    panelElement.style.border = '1px solid blue';
-  }
-};
 
 // 인라인에디터 마우스호버이벤트
 function onMouseoverInlineEditor() {
   const element = readyEditor.value.ui.view.editable.element;
   if (es.isDarkMode) {
     console.log('mouse over darkmode');
-    element.style.border = '1px solid red';
+    element.style.border = '1px solid #a554a7';
   } else {
     console.log('mouse over lightmode');
-    element.style.border = '1px solid red';
+    element.style.border = '1px solid #ed8fa5';
   }
 }
 function onMouseleaveInlineEditor() {
   const element = readyEditor.value.ui.view.editable.element;
   if (es.isDarkMode) {
     console.log('mouse leave darkmode');
-    element.style.border = '1px solid purple';
+    element.style.border = '1px solid #414141';
   } else {
     console.log('mouse leave lightmode');
-    element.style.border = '1px solid orange';
+    element.style.border = '1px solid #e0e0e0';
   }
 }
-watch(
-  () => es.isDarkMode,
-  () => {
-    themeToolbar();
-  }
-);
 </script>
 
 <style scoped>
@@ -128,6 +95,10 @@ watch(
 }
 /* 에디터 포커스 입력칸 CSS */
 .ck-focused {
-  border: 1px solid var(--border-color, lime) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.ck.ck-button.ck-off {
+  color: red !important;
 }
 </style>

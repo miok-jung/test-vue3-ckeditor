@@ -1,3 +1,78 @@
-:root {
-  --ck-custom-border: none;
+// NOTE: 테마 전환시 html에 class여부에 따라 root사용을 변환이 가능하도록 설정
+// NOTE: 테마여부 상관없이 동일하면 첫번째에만 작성하기
+// SECTION: Base, Light
+:root body,
+:root body.light {
+  // ANCHOR: Editor
+  // 기본배경
+  --ck-custom-background: white !important; // 툴바&입력칸 배경
+  // 인라인 보더
+  --border-color: var(--ck-color-base-border);
+  // 인라인 텍스트
+  --input-color-text: var(--ck-color-text);
+  // 클래식 에디터 배경, 그외 툴바 드롭다운
+  --ck-color-base-background: var(--ck-custom-background) !important;
+
+  // ANCHOR: Toolbar
+  // 툴바 배경화면
+  --ck-color-toolbar-background: var(--ck-custom-background) !important;
+  // 보더 & 구분선
+  --ck-color-base-border: #e0e0e0 !important; // 보더관련 전체
+  // 텍스트
+  --ck-color-text: black; // 텍스트
+
+  // ANCHOR: Toolbar Hover : 호버 이벤트
+  --hover-border: #ed8fa5; // button
+  // 버튼 호버
+  --ck-color-button-default-hover-background: var(--hover-border) !important;
+  // 버튼 하위 리스트 호버
+  --ck-color-list-button-hover-background: #ed8fa526 !important; //tinted
+  // 버튼 선택중 하위 리스트 나올때 배경
+  --ck-color-button-on-hover-background: #ed8fa526 !important; //tinted
+
+  // ANCHOR: Toolbar Active : 클릭당시 이벤트
+  // 버튼 선택시
+  --ck-color-button-default-active-background: var(--hover-border) !important;
+
+  // ANCHOR: Toolbar Clicked
+  // 버튼 선택시 칼라및 선택된 리스트 배경
+  --ck-color-button-on-color: var(--hover-border) !important;
+
+  // ANCHOR: Editor Focused
+  --ck-focus-ring: 1px solid #ed8fa5 !important; // button
+  // 클래식 에디터 포커스 될 때, 안쪽 그림자
+  --ck-color-shadow-inner: none !important;
 }
+// !SECTION
+// SECTION: Dark
+:root body.dark {
+  // 기본배경
+  --ck-custom-background: #1a1a1a !important;
+
+  // ANCHOR: 인라인
+  // 인라인 보더
+  --border-color: var(--ck-color-base-border);
+  // 인라인 텍스트
+  --input-color-text: var(--ck-color-text);
+  // 클래식 에디터 배경, 그외 툴바 드롭다운
+  --ck-color-base-background: var(--ck-custom-background) !important;
+  // ANCHOR Toolbar
+  // 툴바 배경화면
+  --ck-color-toolbar-background: var(--ck-custom-background) !important;
+  // 보더 & 구분선
+  --ck-color-base-border: #414141 !important;
+  // 텍스트
+  --ck-color-text: white;
+  --hover-border: #a554a7;
+  // 버튼 호버
+  --ck-color-button-default-hover-background: var(--hover-border) !important;
+  // 버튼 하위 리스트 호버
+  --ck-color-list-button-hover-background: #cf8b9b26 !important; //tinted
+  // 버튼 선택시
+  --ck-color-button-default-active-background: var(--hover-border) !important;
+  // 버튼 선택중 하위 리스트 나올때 배경
+  --ck-color-button-on-hover-background: var(--hover-border) !important;
+  // 버튼 선택시 칼라및 선택된 리스트 배경
+  --ck-color-button-on-color: var(--hover-border) !important;
+}
+// !SECTION

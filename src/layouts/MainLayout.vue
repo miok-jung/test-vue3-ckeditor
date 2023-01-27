@@ -72,13 +72,20 @@ const toggleDarkMode = () => {
   $q.dark.toggle();
   $q.localStorage.set('darkMode', $q.dark.isActive);
   es.isDarkMode = !es.isDarkMode;
+  let body = document.getElementsByTagName('body')[0];
 
+  // const setTheme = (theme: any) => (document.body.className = theme);
   if (es.isDarkMode) {
     console.log('DarkMode');
-    // import('../css/_ckeditor.css');
+
+    body.classList.add('dark');
+    body.classList.remove('light');
+    // setTheme('body--dark dark');
   } else {
     console.log('LightMode');
-    // import('../css/_ckeditorDarkmode.css');
+    body.classList.add('light');
+    body.classList.remove('dark');
+    // setTheme('body--light light');
   }
 };
 </script>
